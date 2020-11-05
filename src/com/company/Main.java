@@ -18,6 +18,7 @@ public class Main {
         Account newAccount = new Account("Checking", aUser, theBank);
         aUser.addAccount(newAccount);
         theBank.addAccount(newAccount);
+        //minut 54:17 skapar meny i main
         
         
     }

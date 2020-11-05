@@ -47,4 +47,28 @@ public class Transaction {
 
     }
 
+    /**
+     * Få fram beloppet på överföringen
+     * @return  belopp
+     */
+    public double getAmount(){
+        return.this.amount;
+    }
+
+    /**
+     * Få ut en sträng som summerar transaktionen
+     * @return  summa-strängen
+     */
+    public String getSummaryLine(){
+
+        if(this.amount>=0){
+            return String.format("%s : $%.02f : %s", this.timestamp.toString(),
+                    this.amount, this.memo);
+        } else{
+            return String.format("%s : $%.02f : %s", this.timestamp.toString(),
+                    this.amount, this.memo);
+
+        }
+    }
+
 }
