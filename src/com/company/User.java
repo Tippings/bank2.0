@@ -58,4 +58,22 @@ public class User {
         return this.uuid;
     }
 
+    public boolean validatePin(String aPin){
+
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            return MessageDigest.isEqual(md.digest(aPin.getBytes()), this.pinHash);
+        } catch (NoSuchAlgorithmException e) {
+            System.out.println("error");
+            e.printStackTrace();
+            System.exit(1);
+        }
+
+        return false;
+    }
+
+    public String getFirstName(){
+        return this.firstName;
+
+    }
 }
