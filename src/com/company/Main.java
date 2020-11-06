@@ -15,27 +15,27 @@ public class Main {
         User aUser = theBank.addUser("john", "doe", "1234");
 
         Account newAccount = new Account("Checking", aUser, theBank);
-        aUser.addAcount(newAccount);
+        aUser.addAccount(newAccount);
         theBank.addAccount(newAccount);
 
         User curUser;
         while (true) {
 
-            curUser = Main.mainMenuPromt(theBank, sc);
+            curUser = Main.mainMenuPrompt(theBank, sc);
 
             Main.printUserMenu(curUser, sc);
 
         }
     }
 
-    public static User mainMenuPromt (Bank theBank, Scanner sc){
+    public static User mainMenuPrompt (Bank theBank, Scanner sc){
 
         String userID;
         String pin;
         User authUser;
 
         do{
-            System.out.println("\n\n Welcome to %s\n\n", theBank.getName());
+            System.out.printf("\n\n Welcome to %s\n\n", theBank.getName());
             System.out.println("Enter user ID:");
             userID = sc.nextLine();
             System.out.println("Enter pin:");
@@ -57,7 +57,7 @@ public class Main {
         int choice;
 
         do {
-            System.out.println("Welcome %s, What to do?", theUser.getFirstName());
+            System.out.printf("Welcome %s, What to do?", theUser.getFirstName());
             System.out.println("[1] Skapa konto");
             System.out.println("[2] Lista konton");
             System.out.println("[3] Sätt in pengar på konto");

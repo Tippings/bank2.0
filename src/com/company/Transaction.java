@@ -52,7 +52,7 @@ public class Transaction {
      * @return  belopp
      */
     public double getAmount(){
-        return.this.amount;
+        return this.amount;
     }
 
     /**

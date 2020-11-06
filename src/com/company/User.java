@@ -47,10 +47,10 @@ public class User {
         this.accounts = new ArrayList<Account>();
 
         // print log message
-        System.out.println("New user %s, &s with ID %s created.\n", lastName, firstName, this.uuid);
+        System.out.printf("New user, %s &s with ID %s created.\n", lastName, firstName, this.uuid);
     }
 
-    public void addAcount(Account anAcct){
+    public void addAccount(Account anAcct){
         this.accounts.add(anAcct);
     }
 
@@ -76,7 +76,7 @@ public class User {
         return this.firstName;
     }
     // prints summaries for the account of this user
-    public void printAccountsSummary(){
+    public void printAccountSummary(){
         System.out.printf("\n\n%s's accounts summary", this.firstName);
         for (int a = 0; a < this.accounts.size();a++){
             System.out.printf("%d) %s\n", a+1,

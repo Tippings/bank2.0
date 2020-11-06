@@ -1,6 +1,7 @@
 package com.company;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Bank {
 
@@ -44,7 +45,7 @@ public class Bank {
             //kolla för att försäkra att det är unikt:
             nonUnique = false;
             for (User u : this.users) {
-                if (uuid.compareTo(u.getUUID))==0){
+                if (uuid.compareTo(u.getUUID())==0){
                     nonUnique = true;
                     break;
                 }
@@ -75,7 +76,7 @@ public class Bank {
             //kolla för att försäkra att det är unikt: Loopa genom konton
             nonUnique = false;
             for (Account a : this.accounts) {
-                if (uuid.compareTo(a.getUUID))==0){
+                if (uuid.compareTo(a.getUUID())==0){
                     nonUnique = true;
                     break;
                 }
@@ -87,14 +88,6 @@ public class Bank {
         return uuid;
     }
 
-    /**
-     * Lägger till ett konto
-     *
-     * @param anAcct kontot som ska läggas till
-     */
-    public void addAccount(Account anAcct) {
-        this.accounts.add(anAcct);
-    }
 
     /**
      * Skapa ny User
@@ -118,28 +111,47 @@ public class Bank {
     }
 
     /**
+     * Lägger till ett konto
+     *
+     * @param newAccount kontot som ska läggas till
+     */
+    public void addAccount(Account newAccount) {
+        this.accounts.add(newAccount);
+    }
+
+    /**
      * Ta fram user-objektet med spec. userId och lösenord- returneras om hittas annars null
      *
      * @param userID UUID användaren
      * @param pin    användarens lösen
      * @return user-objekt
      */
-    public User usrLogin(String userID, String pin) {
+    public User userLogin(String userID, String pin) {
         //returnera user om allt korrekt
 
         //sök igenom listan med användare:
         for (User u : this.users) {
 
             //kolla om userID är korrekt:
-            if (u.getUUID().compareTo(userID) == 0 && u.validatePin(pin)) {//GÖR VALIDATEPIN I USER-KLASS + messageDigest minut 46:14 i klippet
+            if (u.getUUID().compareTo(userID) == 0 && u.validatePin(pin)) {
+                //GÖR VALIDATEPIN I USER-KLASS + messageDigest minut 46:14 i klippet
                 return u;
             }
         }
         //om vi inte hittat användare eller lösenord är fel:
         return null;
     }
+    /**
+     * Get the name of the bank.
+     * @return	the name
+     */
+    public String getName() {
+        return this.name;
+    }
 
 }
+
+
 
 
 
