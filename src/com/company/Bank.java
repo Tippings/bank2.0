@@ -92,7 +92,7 @@ public class Bank {
      *
      * @param anAcct kontot som ska läggas till
      */
-    public void addaAccount(Account anAcct) {
+    public void addAccount(Account anAcct) {
         this.accounts.add(anAcct);
     }
 

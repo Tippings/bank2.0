@@ -1,13 +1,12 @@
 package com.company;
 
-import javax.jws.soap.SOAPBinding;
+
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        System.out.println("ISA");
 
         Scanner sc = new Scanner(System.in);
 
@@ -17,14 +16,14 @@ public class Main {
 
         Account newAccount = new Account("Checking", aUser, theBank);
         aUser.addAcount(newAccount);
-        theBank.addAcount(newAccount);
+        theBank.addAccount(newAccount);
 
         User curUser;
         while (true) {
 
-            curUser = ATM.mainMenuPromt(theBank, sc);
+            curUser = Main.mainMenuPromt(theBank, sc);
 
-            ATM.printUserMenu(carUser, sc);
+            Main.printUserMenu(curUser, sc);
 
         }
     }
@@ -33,12 +32,12 @@ public class Main {
 
         String userID;
         String pin;
-        User autUser;
+        User authUser;
 
         do{
             System.out.println("\n\n Welcome to %s\n\n", theBank.getName());
             System.out.println("Enter user ID:");
-            userId = sc.nextLine();
+            userID = sc.nextLine();
             System.out.println("Enter pin:");
             pin = sc.nextLine();
 
@@ -80,22 +79,22 @@ public class Main {
             switch (choice){
 
                 case 1:
-                    ATM.showTransHistory(theUser, sc);
+                    Main.showTransHistory(theUser, sc);
                     break;
                 case 2:
-                    ATM.withdrawFunds(theUser, sc);
+                    Main.withdrawFunds(theUser, sc);
                     break;
                 case 3:
-                    ATM.depositFunds(theUser, sc);
+                    Main.depositFunds(theUser, sc);
                     break;
                 case 4:
-                    ATM.tranferFunds(theUser, sc);
+                    Main.tranferFunds(theUser, sc);
                     break;
             }
 
             // redisplay meny unless the user wants to quit
             if ( choice !=5){
-                ATM.printUserMenu(theUser, sc);
+                Main.printUserMenu(theUser, sc);
             }
 
         }
