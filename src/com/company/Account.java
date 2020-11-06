@@ -17,7 +17,7 @@ public class Account {
     // list of transactions for this account
     private ArrayList<Transaction>transactions;
 
-    public Account(String name, User holder, Bank the bank ){
+    public Account(String name, User holder, Bank thebank ){
 
         // set the account name and holder
         this.name = name;
