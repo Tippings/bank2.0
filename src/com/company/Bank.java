@@ -134,7 +134,7 @@ public class Bank {
 
             //kolla om userID är korrekt:
             if (u.getUUID().compareTo(userID) == 0 && u.validatePin(pin)) {
-                //GÖR VALIDATEPIN I USER-KLASS + messageDigest minut 46:14 i klippet
+
                 return u;
             }
         }
