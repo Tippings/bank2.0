@@ -17,6 +17,19 @@ public class Account {
     // list of transactions for this account
     private ArrayList<Transaction>transactions;
 
+
+    //Isa lägger till:
+
+    public String accountNo;
+    public double accAmount;
+
+    public Account(String accountNo,double accAmount){
+        this.accountNo= accountNo;
+        this.accAmount=accAmount;
+    }
+
+
+
     public Account(String name, User holder, Bank thebank ){
 
         // set the account name and holder

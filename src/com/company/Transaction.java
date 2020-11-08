@@ -1,12 +1,18 @@
 package com.company;
 
 
+import java.io.File;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Scanner;
+
+import static com.company.Main.*;
 
 public class Transaction {
 
     //Beloppet för transaktionen
-    private double amount;
+    //private double amount;
 
 
     //Tid och datum för transaktion
@@ -18,7 +24,45 @@ public class Transaction {
 
 
     //kontot för vilken överföringen görs
+//    Isa lägger till:
     private Account inAccount;
+    public String fromAccount;
+    public String toAccount;
+    public double amount;
+    public LocalDate date;
+
+
+//Isa lägger till:
+    public Transaction(String fromAccount, String toAccount, double amount, LocalDate date) {
+        this.fromAccount = fromAccount;
+        this.toAccount = toAccount;
+        this.amount = amount;
+        this.date = date;
+
+
+    }
+    public static void payments(Scanner fr, Scanner acc, ArrayList<Account> accounts, ArrayList<Transaction> buppdrag, File konton) {
+        FileToList(fr, buppdrag);
+        accountFileToList(acc, accounts);
+
+        for (int i = 0; i < buppdrag.size(); i++) {
+            if (buppdrag.get(i).date.isBefore(LocalDate.now()) || buppdrag.get(i).equals(LocalDate.now())) {
+                System.out.println(buppdrag.get(i).fromAccount.equals(accounts.get(i).accountNo));//skriver ut betalningsuppdragen på skärmen
+                if (buppdrag.get(i).fromAccount.equals(accounts.get(i).accountNo)) {
+                    accounts.get(i).accAmount = accounts.get(i).accAmount - buppdrag.get(i).amount;
+                }
+                for (int j = 0; j < accounts.size(); j++) {
+                    if (buppdrag.get(i).toAccount.equals(accounts.get(j).accountNo)) {
+                        accounts.get(j).accAmount = accounts.get(j).accAmount + buppdrag.get(i).amount;
+                    }
+                }
+            }
+            //todo: nu körs alla betalningsuppdrag om igen när programmet startar om.
+        }
+        accountListToFile(accounts, konton);
+    }
+
+
 
     /**
      * skapa ny transaktion
